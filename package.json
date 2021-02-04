@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A minimal journal application",
   "main": "dist/main.js",
+  "homepage": "https://github.com/jobala/journal#readme",
   "scripts": {
     "test": "test",
     "start": "tsc --build tsconfig.json && electron ."
@@ -20,14 +21,16 @@
   "bugs": {
     "url": "https://github.com/jobala/journal/issues"
   },
-  "homepage": "https://github.com/jobala/journal#readme",
   "dependencies": {
     "electron": "12.0.0-beta.21",
+    "quill": "^1.3.6",
     "typescript": "4.1.3"
   },
   "devDependencies": {
+    "@types/quill": "^2.0.4",
     "@typescript-eslint/eslint-plugin": "4.14.2",
     "@typescript-eslint/parser": "4.14.2",
+    "electron-reloader": "^1.2.0",
     "eslint": "7.19.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-plugin-import": "2.22.1",
