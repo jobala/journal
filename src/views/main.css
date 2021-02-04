@@ -8,6 +8,10 @@ body {
     overflow: hidden;
 }
 
+*::-webkit-scrollbar {
+    width: 1px;
+}
+
 aside {
     height: inherit;
     width: 30%;
