@@ -1,0 +1,38 @@
+{
+  "name": "journal",
+  "version": "1.0.0",
+  "description": "A minimal journal application",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "test",
+    "start": "tsc --build tsconfig.json && electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jobala/journal.git"
+  },
+  "keywords": [
+    "minimal",
+    "journal"
+  ],
+  "author": "Japheth Obala",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jobala/journal/issues"
+  },
+  "homepage": "https://github.com/jobala/journal#readme",
+  "dependencies": {
+    "electron": "12.0.0-beta.21",
+    "typescript": "4.1.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "4.14.2",
+    "@typescript-eslint/parser": "4.14.2",
+    "eslint": "7.19.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-react": "7.22.0",
+    "eslint-plugin-react-hooks": "4.2.0"
+  }
+}
