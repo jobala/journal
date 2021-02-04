@@ -4,6 +4,7 @@ body {
     margin: 0px;
     padding: 0px;
     height: 100vh;
+    font-family: 'Helvetica';
 }
 
 aside {
@@ -15,12 +16,38 @@ aside {
 main {
     height: inherit;
     width: 70%;
+    padding: 20px;
     display: flex;
+    align-items: center;
     flex-direction: column;
 }
 
-.date {}
-
-.editor {
+.journal {
+    width: 80%
 }
 
+#date h1 {
+    font-weight: lighter;
+    color: #707070;
+    font-size: 30px;
+}
+
+hr {
+    margin-top: -10px;
+    height: 0px;
+    border:1px solid #02C39A;
+}
+
+
+.ql-container.ql-snow {
+    border: none;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #707070;
+}
+
+.ql-editor {
+    margin-right: 0px;
+    padding: 0px;
+    padding-top: 15px
+}

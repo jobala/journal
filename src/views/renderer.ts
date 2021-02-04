@@ -6,6 +6,10 @@ class Editor {
   constructor() {
     this.quill = new Quill('#editor', {
       theme: 'snow',
+      placeholder: 'Start writing',
+      modules: {
+        toolbar: false,
+      },
     });
   }
 }
