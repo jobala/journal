@@ -1,17 +1,10 @@
 import Quill from 'quill';
 
-class Editor {
-  private quill: Quill
+const quill = new Quill('#editor', {
+  theme: 'snow',
+  modules: {
+    toolbar: false,
+  },
+});
 
-  constructor() {
-    this.quill = new Quill('#editor', {
-      theme: 'snow',
-      placeholder: 'Start writing',
-      modules: {
-        toolbar: false,
-      },
-    });
-  }
-}
-
-const editor = new Editor();
+quill.focus();
