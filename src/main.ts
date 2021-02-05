@@ -18,5 +18,6 @@ app.on('ready', () => {
     },
   });
 
-  win.loadURL(`file://${__dirname}/../src/views/main.html`);
+  win.loadURL(`file://${__dirname}/index.html`);
+  win.webContents.openDevTools();
 });
