@@ -19,12 +19,18 @@ module.exports = [
     externals: {
       fsevents: "require('fsevents')",
     },
+    resolve: {
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    },
   },
   {
     mode: 'development',
     entry: './src/views/app.tsx',
     target: 'electron-renderer',
     devtool: 'source-map',
+    resolve: {
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    },
     externals: {
       fsevents: "require('fsevents')",
     },
@@ -33,6 +39,10 @@ module.exports = [
         test: /\.ts(x?)$/,
         include: /src/,
         use: [{ loader: 'ts-loader' }],
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       }],
     },
     output: {
