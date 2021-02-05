@@ -6,18 +6,21 @@ import { Entries } from './entries';
 import './app.css';
 
 const App = () => {
-  const [entry, setEntry] = useState('');
+  const [entryId, setEntryId] = useState(0);
+
   return (
     <div className="container">
       <aside>
-        <Entries />
+        <Entries setEntryId={setEntryId} />
       </aside>
       <main>
-        <div id="date">
-          <h1>Thursday, February 4th, 2021</h1>
+        <div className="journal">
+          <div id="date">
+            <h1>Thursday, February 4th, 2021</h1>
+          </div>
+          <hr />
+          <Editor entryId={entryId} />
         </div>
-        <hr />
-        <Editor onChange={setEntry} />
       </main>
     </div>
   );

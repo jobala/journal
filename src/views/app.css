@@ -3,7 +3,7 @@
   flex-direction: row;
   height: 100vh;
   overflow: hidden;
-  font-family: 'Helvetica';
+  font-family: 'Helvetica Neue';
 }
 
 aside {
@@ -16,6 +16,13 @@ main {
   width: 70%;
   height: 90vh;
   padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.journal {
+  display: block;
+  width: 80%;
 }
 
 #date h1 {
