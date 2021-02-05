@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useQuill } from 'react-quilljs';
 
@@ -12,7 +12,15 @@ const Editor = () => {
     },
   });
 
-  console.log(quill);
+  useEffect(() => {
+    if (quill) {
+      quill.on('text-change', () => {
+        const text = quill.getContents();
+        console.log(text);
+      });
+    }
+  }, [quill]);
+
   return (
     <div className="editor-container">
       <div ref={quillRef} />
