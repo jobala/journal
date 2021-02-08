@@ -7,7 +7,7 @@ export class EntryController {
       this.entryModel = new Entry();
     }
 
-    public addEntry(entry: IEntry) {
-      this.entryModel.add(entry);
+    public addEntry(entry: IEntry): Promise<IEntry> {
+      return this.entryModel.add(entry);
     }
 }
