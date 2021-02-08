@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { app, BrowserWindow, ipcMain as ipc } from 'electron';
 
-import { IEntry } from './models/entry';
+import { IEntry, IUpdatePayload } from './models/entry';
 import { EntryController } from './controllers/entry';
 
 try {
@@ -32,3 +32,11 @@ ipc.on('create-entry', (event, payload: IEntry) => {
     event.sender.send('entry-created', newEntry._id);
   }).catch((error: Error) => { throw error; });
 });
+
+ipc.on('update-entry', (event, payload: IUpdatePayload) => {
+  entryController.updateEntry(payload)
+    .then(() => event.sender.send('entry-updated'))
+    .catch((error: Error) => { throw error; });
+});
+
+entryController.getAll().then((entries) => console.log(entries));

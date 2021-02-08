@@ -10,8 +10,8 @@ export interface IEntry {
 }
 
 export interface IUpdatePayload {
+    _id: string;
     text: string;
-    updatedAt: string;
 }
 
 export class Entry {
@@ -32,7 +32,7 @@ export class Entry {
       });
     }
 
-    public update(payload: IEntry): Promise<string> {
+    public update(payload: IUpdatePayload): Promise<string> {
       return new Promise((resolve: Function, reject: Function) => {
         this.db.update({ _id: payload._id }, {
           $set: {

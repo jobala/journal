@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-
 import { useQuill } from 'react-quilljs';
+import { ipcRenderer as ipc } from 'electron';
 
 import 'quill/dist/quill.snow.css';
 import './editor.css';
@@ -11,7 +11,6 @@ interface IEditor {
 
 const Editor = (props: IEditor) => {
   const { entryId } = props;
-  console.log(entryId);
 
   const { quill, quillRef } = useQuill({
     modules: {
@@ -26,11 +25,13 @@ const Editor = (props: IEditor) => {
   useEffect(() => {
     if (quill) {
       quill.on('text-change', () => {
-        const text = quill.getContents();
-        console.log(text, entryId);
+        setTimeout(() => {
+          const contents = quill.getContents();
+          ipc.send('update-entry', { text: JSON.stringify(contents), _id: entryId });
+        }, 500);
       });
     }
-  }, [quill]);
+  }, [quill, entryId]);
 
   return (
     <div className="editor-container">
