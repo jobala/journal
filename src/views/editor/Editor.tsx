@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useQuill } from 'react-quilljs';
-import { ipcRenderer as ipc } from 'electron';
 
 import 'quill/dist/quill.snow.css';
 import './editor.css';
+import { entryController } from '../../controllers/entry';
 
 interface IEditor {
-  entryId: number
+  entryId: string
 }
 
 const Editor = (props: IEditor) => {
@@ -27,7 +27,14 @@ const Editor = (props: IEditor) => {
       quill.on('text-change', () => {
         setTimeout(() => {
           const contents = quill.getContents();
-          ipc.send('update-entry', { text: JSON.stringify(contents), _id: entryId });
+          const payload = {
+            text: JSON.stringify(contents),
+            _id: entryId,
+          };
+
+          entryController.updateEntry(payload)
+            .then(() => console.log('Updated'))
+            .catch((error: Error) => { throw error; });
         }, 500);
       });
     }

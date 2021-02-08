@@ -1,6 +1,6 @@
 import { Entry, IEntry, IUpdatePayload } from '../models/entry';
 
-export class EntryController {
+class EntryController {
     private entryModel: Entry;
 
     constructor() {
@@ -19,3 +19,5 @@ export class EntryController {
       return this.entryModel.find();
     }
 }
+
+export const entryController = new EntryController();

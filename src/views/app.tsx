@@ -7,7 +7,7 @@ import { Entries } from './entries';
 import './app.css';
 
 const App = () => {
-  const [entryId, setEntryId] = useState(0);
+  const [entryId, setEntryId] = useState();
 
   useEffect(() => {
     if (ipc) {
@@ -20,7 +20,7 @@ const App = () => {
   return (
     <div className="container">
       <aside>
-        <Entries />
+        <Entries setEntryId={setEntryId} />
       </aside>
       <main>
         <div className="journal">
