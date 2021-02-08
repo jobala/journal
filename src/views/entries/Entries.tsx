@@ -14,11 +14,12 @@ const Entries = (props: IEntry) => {
 
   useEffect(() => {
     entryController.getAll()
-      .then((allEntries) => { console.log(allEntries); setEntries(allEntries); });
+      .then((allEntries) => setEntries(allEntries));
   }, [entries]);
 
   const handleCreateEntry = (event: any) => {
     const entry = {
+      text: JSON.stringify({ ops: [{ insert: '' }] }),
       favorite: false,
       createdAt: Date.now().toString(),
       updatedAt: Date.now().toString(),
@@ -29,16 +30,21 @@ const Entries = (props: IEntry) => {
     });
   };
 
+  const handleOnClick = (id: string) => {
+    setEntryId(id);
+  };
+
   return (
     <div>
       <button type="button" onClick={handleCreateEntry}>Create Journal</button>
-
       <div>
         <ul>
           {entries.length > 0 && entries.map((entry) => (
-            <li>
-              {JSON.parse(entry.text).ops[0].insert}
-            </li>
+            <div onClick={() => handleOnClick(entry._id)}>
+              <li>
+                {JSON.parse(entry.text).ops[0].insert}
+              </li>
+            </div>
           ))}
         </ul>
       </div>

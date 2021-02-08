@@ -6,17 +6,25 @@ import './editor.css';
 import { entryController } from '../../controllers/entry';
 
 interface IEditor {
-  entryId: string
+  entryId: string;
 }
 
 const Editor = (props: IEditor) => {
-  const { entryId } = props;
+  let { entryId } = props;
 
   const { quill, quillRef } = useQuill({
     modules: {
       toolbar: false,
     },
   });
+
+  useEffect(() => {
+    if (quill) {
+      entryController.get(entryId).then((result: any) => {
+        quill.setContents(JSON.parse(result[0].text).ops);
+      });
+    }
+  }, [entryId]);
 
   if (quill) {
     quill.focus();
@@ -25,19 +33,21 @@ const Editor = (props: IEditor) => {
   useEffect(() => {
     if (quill) {
       quill.on('text-change', () => {
-        setTimeout(() => {
-          const contents = quill.getContents();
-          const payload = {
-            text: JSON.stringify(contents),
-            _id: entryId,
-          };
+        const contents = quill.getContents();
+        const payload = {
+          text: JSON.stringify(contents),
+          _id: entryId,
+        };
 
-          entryController.updateEntry(payload)
-            .then(() => console.log('Updated'))
-            .catch((error: Error) => { throw error; });
-        }, 500);
+        entryController.updateEntry(payload)
+          .then(() => console.log())
+          .catch((error: Error) => { throw error; });
       });
     }
+
+    return () => {
+      entryId = undefined;
+    };
   }, [quill, entryId]);
 
   return (

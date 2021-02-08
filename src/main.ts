@@ -1,9 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import {
-  app, BrowserWindow, emitters, ipcMain as ipc,
-} from 'electron';
-
-import { IEntry, IUpdatePayload } from './models/entry';
+import { app, BrowserWindow } from 'electron';
 
 try {
   // eslint-disable-next-line global-require

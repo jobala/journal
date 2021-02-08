@@ -18,7 +18,7 @@ export class Entry {
   private db: Datastore
 
   constructor() {
-    this.db = new Datastore({ filename: './journal.db', autoload: true });
+    this.db = new Datastore({ filename: './te', autoload: true });
   }
 
   public add(payload: IEntry): Promise<IEntry> {
@@ -51,6 +51,17 @@ export class Entry {
   public find() {
     return new Promise((resolve: Function, reject: Function) => {
       this.db.find({}, (err: Error, docs: any) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(docs);
+      });
+    });
+  }
+
+  public findOne(id: string): Promise<IEntry[]> {
+    return new Promise((resolve: Function, reject: Function) => {
+      this.db.find({ _id: id }, (err: Error, docs: any) => {
         if (err) {
           return reject(err);
         }
