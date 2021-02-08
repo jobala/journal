@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Helvetica Neue';
+}
+
+aside {
+  width: 30%;
+  color: blue;
+  border-right: 1px solid #E0DDDD;
+}
+
+main {
+  width: 70%;
+  height: 90vh;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.journal {
+  display: block;
+  width: 80%;
+}
+
+#date h1 {
+    font-weight: lighter;
+    color: #707070;
+    font-size: 30px;
+}
+
+hr {
+    margin-top: -10px;
+    height: 0px;
+    border:1px solid #02C39A;
+}

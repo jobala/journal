@@ -1,0 +1,24 @@
+*::-webkit-scrollbar {
+    width: 1px;
+}
+
+.editor-container {
+    width: 80%;
+    height: inherit;
+    display: block;
+    margin: 0 auto;
+    overflow-y: scroll;
+}
+
+.ql-container.ql-snow {
+    border: none;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #707070;
+}
+
+.ql-editor {
+    margin-right: 0px;
+    padding: 0px;
+    padding-top: 15px
+}
