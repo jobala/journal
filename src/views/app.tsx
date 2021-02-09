@@ -24,10 +24,6 @@ const App = () => {
       </aside>
       <main>
         <div className="journal">
-          <div id="date">
-            <h1>Thursday, February 4th, 2021</h1>
-          </div>
-          <hr />
           <Editor entryId={entryId} />
         </div>
       </main>
