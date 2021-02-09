@@ -1,0 +1,22 @@
+button {
+  margin: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.list-item {
+  border-top: 1px solid #E0DDDD;
+  height: 80px;
+  padding-bottom: 5px;
+}
+
+.text {
+  color: #908F8F;
+  padding: 10px;
+  height: 70px;
+  overflow-y:  hidden;
+}

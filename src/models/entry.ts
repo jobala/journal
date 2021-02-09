@@ -50,7 +50,7 @@ export class Entry {
 
   public find() {
     return new Promise((resolve: Function, reject: Function) => {
-      this.db.find({}, (err: Error, docs: any) => {
+      this.db.find({}).sort({ createdAt: -1 }).exec((err: Error, docs: any) => {
         if (err) {
           return reject(err);
         }
