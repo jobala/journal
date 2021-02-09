@@ -1,21 +1,27 @@
 import { Entry, IEntry, IUpdatePayload } from '../models/entry';
 
-export class EntryController {
-    private entryModel: Entry;
+class EntryController {
+  private entryModel: Entry;
 
-    constructor() {
-      this.entryModel = new Entry();
-    }
+  constructor() {
+    this.entryModel = new Entry();
+  }
 
-    public addEntry(entry: IEntry): Promise<IEntry> {
-      return this.entryModel.add(entry);
-    }
+  public addEntry(entry: IEntry): Promise<IEntry> {
+    return this.entryModel.add(entry);
+  }
 
-    public updateEntry(payload: IUpdatePayload): Promise<string> {
-      return this.entryModel.update(payload);
-    }
+  public updateEntry(payload: IUpdatePayload): Promise<string> {
+    return this.entryModel.update(payload);
+  }
 
-    public getAll() {
-      return this.entryModel.find();
-    }
+  public getAll() {
+    return this.entryModel.find();
+  }
+
+  public get(id: string): Promise<IEntry[]> {
+    return this.entryModel.findOne(id);
+  }
 }
+
+export const entryController = new EntryController();

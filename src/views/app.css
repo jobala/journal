@@ -10,6 +10,8 @@ aside {
   width: 30%;
   color: blue;
   border-right: 1px solid #E0DDDD;
+  height: inherit;
+  overflow-y: scroll;
 }
 
 main {
