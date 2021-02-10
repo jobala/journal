@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import './entries.css';
-import { IEntry } from '../../models/entry';
 import { entryController } from '../../controllers/entry';
+import { IEntryProps } from '../../types';
 
-interface IEntries {
-  setEntryId: Function
-}
-
-const Entries = (props: IEntries) => {
+const Entries = (props: IEntryProps) => {
   const { setEntryId } = props;
   const [entries, setEntries] = useState([]);
 

@@ -1,18 +1,6 @@
 import Datastore from 'nedb';
 
-export interface IEntry {
-  _id?: string;
-  tag?: string[];
-  text: string;
-  createdAt: string;
-  updatedAt: string;
-  favorite: boolean;
-}
-
-export interface IUpdatePayload {
-  _id: string;
-  text: string;
-}
+import { IEntry, IUpdatePayload } from '../types';
 
 export class Entry {
   private db: Datastore
