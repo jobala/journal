@@ -6,7 +6,7 @@ export class Entry {
   private db: Datastore
 
   constructor() {
-    this.db = new Datastore({ filename: './journal_database.db', autoload: true });
+    this.db = new Datastore({ filename: './te', autoload: true });
   }
 
   public add(payload: IEntry): Promise<IEntry> {

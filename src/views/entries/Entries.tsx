@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import './entries.css';
 import { entryController } from '../../controllers/entry';
-import { IEntryProps } from '../../types';
+import { IEntryProps, IEntry } from '../../types';
 
 const Entries = (props: IEntryProps) => {
   const { setEntryId } = props;
@@ -13,7 +13,7 @@ const Entries = (props: IEntryProps) => {
       .then((allEntries) => setEntries(allEntries));
   }, [entries]);
 
-  const handleCreateEntry = (event: any) => {
+  const handleCreateEntry = () => {
     const entry = {
       text: JSON.stringify({ ops: [{ insert: '' }] }),
       favorite: false,
