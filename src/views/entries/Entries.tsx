@@ -74,7 +74,23 @@ const Entries = (props: IEntryProps) => {
 
       });
     } else {
-      obj[month] = { items: [] };
+      obj[month] = {
+        items: [{
+          title: (
+            <div onClick={() => handleOnClick(entry._id)} className="list-item">
+              <p>
+                {
+                  getText(entry).length > 130
+                    ? `${getText(entry).substring(0, 130)} ...`
+                    : getText(entry)
+                }
+              </p>
+
+            </div>
+          ),
+
+        }],
+      };
     }
 
     return obj;
