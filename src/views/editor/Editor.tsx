@@ -5,13 +5,7 @@ import 'quill/dist/quill.snow.css';
 import './editor.css';
 import { entryController } from '../../controllers/entry';
 import { IEditorProps } from '../../types';
-
-const WEEKDAYS = [
-  'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
-];
-
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-  'October', 'November', 'December'];
+import { WEEKDAYS, MONTHS } from '../../constants';
 
 const Editor = (props: IEditorProps) => {
   let { entryId } = props;

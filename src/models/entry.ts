@@ -6,6 +6,7 @@ export class Entry {
   private db: Datastore
 
   constructor() {
+    // TODO: Pick db based on an environment variable
     this.db = new Datastore({ filename: './te', autoload: true });
   }
 

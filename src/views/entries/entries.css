@@ -10,8 +10,8 @@ ul {
 
 .list-item {
   border-top: 1px solid #E0DDDD;
-  height: 80px;
-  padding-bottom: 5px;
+  height: 50px;
+  padding: 0 10px;
 }
 
 .text {
