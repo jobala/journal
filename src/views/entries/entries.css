@@ -9,7 +9,7 @@ ul {
 }
 
 .list-item {
-  border-top: 1px solid #E0DDDD;
+  border-bottom: 1px solid #E0DDDD;
   height: 50px;
   padding: 0 10px;
 }
