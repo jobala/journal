@@ -48,7 +48,7 @@ export class Entry {
     });
   }
 
-  public find() {
+  public find(): Promise<IEntry[]> {
     return new Promise((resolve: Function, reject: Function) => {
       this.db.find({}).sort({ createdAt: -1 }).exec((err: Error, docs: any) => {
         if (err) {

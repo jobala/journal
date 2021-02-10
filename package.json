@@ -7,7 +7,7 @@
   "scripts": {
     "test": "test",
     "build": "webpack --config ./webpack.config.js --watch",
-    "build:ci": "webpack --config ./webpack.config.js",
+    "build:ci": "webpack --config ./webpack.config.js && electron-packager . --platforms=darwin,win32,linux",
     "start": "electron ./dist/main.js"
   },
   "repository": {

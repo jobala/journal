@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ipcRenderer as ipc } from 'electron';
 
 import './entries.css';
-import { IEntry } from 'models/entry';
+import { IEntry } from '../../models/entry';
 import { entryController } from '../../controllers/entry';
 
 interface IEntries {

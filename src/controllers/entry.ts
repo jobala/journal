@@ -15,7 +15,7 @@ class EntryController {
     return this.entryModel.update(payload);
   }
 
-  public getAll() {
+  public getAll(): Promise<IEntry[]> {
     return this.entryModel.find();
   }
 
