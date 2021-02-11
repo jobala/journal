@@ -19,3 +19,8 @@ export interface IEntryProps {
 export interface IEditorProps {
   entryId: string;
 }
+
+export interface IListProps {
+  handleOnClick: Function;
+  entry: IEntry
+}

@@ -1,45 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ReactListView from 'react-listview-sticky-header';
 
-import './entries.css';
+import { ListItem } from './ListItem';
 import { entryController } from '../../controllers/entry';
 import { IEntryProps, IEntry } from '../../types';
 import { MONTHS } from '../../constants';
-
-const getText = (entry: IEntry): string => JSON.parse(entry.text).ops[0].insert;
-
-const styles = {
-  outerDiv: {
-    height: 'inherit',
-    overflowY: 'auto',
-    width: '100%',
-  },
-
-  ul: {
-    margin: '0px',
-    listStyleType: 'none',
-    padding: '0px',
-  },
-
-  fixedPosition: {
-    position: 'fixed',
-    width: '347px',
-    top: '0px',
-  },
-
-  listHeader: {
-    width: '347px',
-    height: '27px',
-    background: '#94D6CF',
-    color: 'white',
-  },
-
-  listItems: {
-    color: '#908F8F',
-    paddingleft: '10px',
-    marginLeft: '10px',
-  },
-};
+import './entries.css';
+import { styles } from './styles';
 
 const Entries = (props: IEntryProps) => {
   const { setEntryId } = props;
@@ -53,42 +20,19 @@ const Entries = (props: IEntryProps) => {
       });
   }, []);
 
-  const parseEntries = (entries: IEntry[]) => entries.reduce((obj: any, entry: IEntry) => {
+  const parseEntries = (allEntries: IEntry[]) => allEntries.reduce((obj: any, entry: IEntry) => {
     const dateObj = new Date(Number(entry.createdAt));
     const month = MONTHS[dateObj.getMonth()];
 
     if (obj[month]) {
       obj[month].items.push({
-        title: (
-          <div onClick={() => handleOnClick(entry._id)} className="list-item">
-            <p>
-              {
-                getText(entry).length > 130
-                  ? `${getText(entry).substring(0, 130)} ...`
-                  : getText(entry)
-              }
-            </p>
-
-          </div>
-        ),
+        title: <ListItem handleOnClick={handleOnClick} entry={entry} />,
 
       });
     } else {
       obj[month] = {
         items: [{
-          title: (
-            <div onClick={() => handleOnClick(entry._id)} className="list-item">
-              <p>
-                {
-                  getText(entry).length > 130
-                    ? `${getText(entry).substring(0, 130)} ...`
-                    : getText(entry)
-                }
-              </p>
-
-            </div>
-          ),
-
+          title: <ListItem handleOnClick={handleOnClick} entry={entry} />,
         }],
       };
     }
@@ -96,8 +40,8 @@ const Entries = (props: IEntryProps) => {
     return obj;
   }, {});
 
-  const prepareDataList = (entries: IEntry[]) => {
-    const parsedEntries = parseEntries(entries);
+  const prepareDataList = (allEntries: IEntry[]) => {
+    const parsedEntries = parseEntries(allEntries);
     return Object.keys(parsedEntries).map((month) => {
       const obj = {
         headerName: month,
@@ -121,7 +65,6 @@ const Entries = (props: IEntryProps) => {
   };
 
   const handleOnClick = (id: string) => {
-    console.log('Calling on Click');
     setEntryId(id);
   };
 
