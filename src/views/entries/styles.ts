@@ -29,7 +29,5 @@ export const styles = {
 
   listItems: {
     color: '#908F8F',
-    paddingleft: '10px',
-    marginLeft: '10px',
   },
 };

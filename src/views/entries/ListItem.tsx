@@ -8,14 +8,13 @@ export const ListItem = (props: IListProps) => {
 
   return (
     <div onClick={() => handleOnClick(entry._id)} className="list-item">
-      <p>
+      <div className="text">
         {
-          getText(entry).length > 130
-            ? `${getText(entry).substring(0, 130)} ...`
+          getText(entry).length > 120
+            ? `${getText(entry).substring(0, 120)} ...`
             : getText(entry)
         }
-      </p>
-
+      </div>
     </div>
   );
 };

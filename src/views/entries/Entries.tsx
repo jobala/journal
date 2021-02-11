@@ -5,8 +5,8 @@ import { ListItem } from './ListItem';
 import { entryController } from '../../controllers/entry';
 import { IEntryProps, IEntry } from '../../types';
 import { MONTHS } from '../../constants';
-import './entries.css';
 import { styles } from './styles';
+import './entries.css';
 
 const Entries = (props: IEntryProps) => {
   const { setEntryId } = props;
@@ -30,6 +30,7 @@ const Entries = (props: IEntryProps) => {
 
       });
     } else {
+      // eslint-disable-next-line no-param-reassign
       obj[month] = {
         items: [{
           title: <ListItem handleOnClick={handleOnClick} entry={entry} />,
