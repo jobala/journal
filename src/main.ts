@@ -19,4 +19,6 @@ app.on('ready', () => {
   });
 
   win.loadURL(`file://${__dirname}/index.html`);
+  // TODO: Only open devtools in dev environment
+  win.webContents.openDevTools();
 });

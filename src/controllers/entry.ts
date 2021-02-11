@@ -1,4 +1,5 @@
-import { Entry, IEntry, IUpdatePayload } from '../models/entry';
+import { Entry } from '../models/entry';
+import { IEntry, IUpdatePayload } from '../types';
 
 class EntryController {
   private entryModel: Entry;

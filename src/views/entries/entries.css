@@ -9,14 +9,17 @@ ul {
 }
 
 .list-item {
-  border-top: 1px solid #E0DDDD;
-  height: 80px;
-  padding-bottom: 5px;
+  border-bottom: 1px solid #E0DDDD;
+  height: 70px;
+  padding: 0 10px;
 }
 
 .text {
   color: #908F8F;
-  padding: 10px;
   height: 70px;
   overflow-y:  hidden;
+}
+
+span {
+  margin-left: 0px !important
 }

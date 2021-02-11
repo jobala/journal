@@ -4,19 +4,10 @@ import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
 import './editor.css';
 import { entryController } from '../../controllers/entry';
+import { IEditorProps } from '../../types';
+import { WEEKDAYS, MONTHS } from '../../constants';
 
-interface IEditor {
-  entryId: string;
-}
-
-const WEEKDAYS = [
-  'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
-];
-
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-  'October', 'November', 'December'];
-
-const Editor = (props: IEditor) => {
+const Editor = (props: IEditorProps) => {
   let { entryId } = props;
   const [date, setDate] = useState('');
 

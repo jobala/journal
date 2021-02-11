@@ -1,24 +1,13 @@
 import Datastore from 'nedb';
 
-export interface IEntry {
-  _id?: string;
-  tag?: string[];
-  text: string;
-  createdAt: string;
-  updatedAt: string;
-  favorite: boolean;
-}
-
-export interface IUpdatePayload {
-  _id: string;
-  text: string;
-}
+import { IEntry, IUpdatePayload } from '../types';
 
 export class Entry {
   private db: Datastore
 
   constructor() {
-    this.db = new Datastore({ filename: './journal_database.db', autoload: true });
+    // TODO: Pick db based on an environment variable
+    this.db = new Datastore({ filename: './te', autoload: true });
   }
 
   public add(payload: IEntry): Promise<IEntry> {
