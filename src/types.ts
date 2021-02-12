@@ -13,7 +13,8 @@ export interface IUpdatePayload {
 }
 
 export interface IEntryProps {
-  setEntryId: Function
+  setEntryId: Function;
+  setShowEditor: Function;
 }
 
 export interface IEditorProps {
@@ -22,5 +23,5 @@ export interface IEditorProps {
 
 export interface IListProps {
   handleOnClick: Function;
-  entry: IEntry
+  entry: IEntry;
 }

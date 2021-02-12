@@ -10,7 +10,6 @@ import { WEEKDAYS, MONTHS } from '../../constants';
 const Editor = (props: IEditorProps) => {
   let { entryId } = props;
   const [date, setDate] = useState('');
-
   const { quill, quillRef } = useQuill({
     modules: {
       toolbar: false,
@@ -54,7 +53,6 @@ const Editor = (props: IEditorProps) => {
   return (
     <div className="editor-container">
       <div id="date">
-        {/* <h1>Thursday, February 4th, 2021</h1> */}
         <h1>
           {`${WEEKDAYS[dateObj.getDay()]}, ${MONTHS[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`}
         </h1>

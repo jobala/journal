@@ -9,7 +9,7 @@ import { styles } from './styles';
 import './entries.css';
 
 const Entries = (props: IEntryProps) => {
-  const { setEntryId } = props;
+  const { setEntryId, setShowEditor } = props;
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
@@ -66,6 +66,8 @@ const Entries = (props: IEntryProps) => {
   };
 
   const handleOnClick = (id: string) => {
+    setShowEditor(true);
+    setEntryId('hello');
     setEntryId(id);
   };
 
