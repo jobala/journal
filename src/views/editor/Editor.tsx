@@ -47,7 +47,7 @@ const Editor = (props: IEditorProps) => {
     return () => {
       entryId = undefined;
     };
-  }, [quill]);
+  });
 
   const dateObj = new Date(Number(date));
   return (
