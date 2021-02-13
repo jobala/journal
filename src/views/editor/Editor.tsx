@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { useQuill } from 'react-quilljs';
 
 import 'quill/dist/quill.snow.css';
@@ -23,7 +23,7 @@ const Editor = (props: IEditorProps) => {
         setDate(result[0].createdAt);
       });
     }
-  }, [entryId]);
+  });
 
   if (quill) {
     quill.focus();
@@ -47,7 +47,7 @@ const Editor = (props: IEditorProps) => {
     return () => {
       entryId = undefined;
     };
-  });
+  }, [quill]);
 
   const dateObj = new Date(Number(date));
   return (

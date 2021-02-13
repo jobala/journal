@@ -62,13 +62,13 @@ const Entries = (props: IEntryProps) => {
 
     entryController.addEntry(entry).then((newEntry) => {
       setEntryId(newEntry._id);
+      setShowEditor(true);
     });
   };
 
   const handleOnClick = (id: string) => {
-    setShowEditor(true);
-    setEntryId('hello');
     setEntryId(id);
+    setShowEditor(true);
   };
 
   return (
