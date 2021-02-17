@@ -39,6 +39,8 @@ const Editor = (props: IEditorProps) => {
           _id: entryId,
         };
 
+        // Debouncing saves on database calls by putting a one second delay between calls
+        // allows us to bulk changes and update the database once in every second.
         setTimeout(() => {
           entryController.updateEntry(payload)
             .then(() => setEntryUpdated(payload.text))
