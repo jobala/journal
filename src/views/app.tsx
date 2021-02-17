@@ -7,20 +7,16 @@ import './app.css';
 
 const App = () => {
   const [entryId, setEntryId] = useState('');
-  const [showEditor, setShowEditor] = useState(false);
+  const [entryUpdated, setEntryUpdated] = useState('');
 
   return (
     <div className="container">
       <aside>
-        <Entries setEntryId={setEntryId} setShowEditor={setShowEditor} />
+        <Entries setEntryId={setEntryId} entryUpdated={entryUpdated} />
       </aside>
       <main>
         <div className="journal">
-          {
-            showEditor
-              ? <Editor entryId={entryId} />
-              : (<div className="entry-placeholder"><h1>No Entry Selected</h1></div>)
-          }
+          <Editor entryId={entryId} setEntryUpdated={setEntryUpdated} />
         </div>
       </main>
     </div>

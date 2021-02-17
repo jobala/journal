@@ -14,11 +14,12 @@ export interface IUpdatePayload {
 
 export interface IEntryProps {
   setEntryId: Function;
-  setShowEditor: Function;
+  entryUpdated: string;
 }
 
 export interface IEditorProps {
   entryId: string;
+  setEntryUpdated: Function;
 }
 
 export interface IListProps {

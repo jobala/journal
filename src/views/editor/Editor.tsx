@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuill } from 'react-quilljs';
 
 import 'quill/dist/quill.snow.css';
@@ -9,6 +9,7 @@ import { WEEKDAYS, MONTHS } from '../../constants';
 
 const Editor = (props: IEditorProps) => {
   let { entryId } = props;
+  const { setEntryUpdated } = props;
   const [date, setDate] = useState('');
   const { quill, quillRef } = useQuill({
     modules: {
@@ -23,7 +24,7 @@ const Editor = (props: IEditorProps) => {
         setDate(result[0].createdAt);
       });
     }
-  });
+  }, [entryId]);
 
   if (quill) {
     quill.focus();
@@ -38,9 +39,11 @@ const Editor = (props: IEditorProps) => {
           _id: entryId,
         };
 
-        entryController.updateEntry(payload)
-          .then(() => console.log())
-          .catch((error: Error) => { throw error; });
+        setTimeout(() => {
+          entryController.updateEntry(payload)
+            .then(() => setEntryUpdated(payload.text))
+            .catch((error: Error) => { throw error; });
+        }, 1000);
       });
     }
 
@@ -54,7 +57,7 @@ const Editor = (props: IEditorProps) => {
     <div className="editor-container">
       <div id="date">
         <h1>
-          {`${WEEKDAYS[dateObj.getDay()]}, ${MONTHS[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`}
+          {date && `${WEEKDAYS[dateObj.getDay()]}, ${MONTHS[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`}
         </h1>
       </div>
       <hr />
