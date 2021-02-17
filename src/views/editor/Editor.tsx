@@ -9,8 +9,8 @@ import { WEEKDAYS, MONTHS } from '../../constants';
 
 const Editor = (props: IEditorProps) => {
   let { entryId } = props;
+  const { setEntryUpdated } = props;
   const [date, setDate] = useState('');
-
   const { quill, quillRef } = useQuill({
     modules: {
       toolbar: false,
@@ -39,9 +39,13 @@ const Editor = (props: IEditorProps) => {
           _id: entryId,
         };
 
-        entryController.updateEntry(payload)
-          .then(() => console.log())
-          .catch((error: Error) => { throw error; });
+        // Debouncing saves on database calls by putting a one second delay between calls
+        // allows us to bulk changes and update the database once in every second.
+        setTimeout(() => {
+          entryController.updateEntry(payload)
+            .then(() => setEntryUpdated(payload.text))
+            .catch((error: Error) => { throw error; });
+        }, 1000);
       });
     }
 
@@ -54,9 +58,8 @@ const Editor = (props: IEditorProps) => {
   return (
     <div className="editor-container">
       <div id="date">
-        {/* <h1>Thursday, February 4th, 2021</h1> */}
         <h1>
-          {`${WEEKDAYS[dateObj.getDay()]}, ${MONTHS[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`}
+          {date && `${WEEKDAYS[dateObj.getDay()]}, ${MONTHS[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`}
         </h1>
       </div>
       <hr />

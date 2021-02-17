@@ -3,7 +3,7 @@
 }
 
 .editor-container {
-    width: 80%;
+    width: 100%;
     height: inherit;
     display: block;
     margin: 0 auto;
@@ -21,4 +21,18 @@
     margin-right: 0px;
     padding: 0px;
     padding-top: 15px
+}
+
+.entry-placeholder {
+    margin-top: 80px;
+    display: flex;
+    width: 80%;
+    height: inherit;
+    justify-content: center
+}
+
+.entry-placeholder h1 {
+    font-weight: 200;
+    color: #02C39A;
+    font-size: 30px;
 }

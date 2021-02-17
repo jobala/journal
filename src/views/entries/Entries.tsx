@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import ReactListView from 'react-listview-sticky-header';
 
 import { ListItem } from './ListItem';
@@ -8,17 +8,24 @@ import { MONTHS } from '../../constants';
 import { styles } from './styles';
 import './entries.css';
 
+const getEntries = (): Promise<IEntry[]> => entryController.getAll();
+
 const Entries = (props: IEntryProps) => {
-  const { setEntryId } = props;
+  const { setEntryId, entryUpdated } = props;
   const [entries, setEntries] = useState([]);
 
-  useEffect(() => {
-    entryController.getAll()
-      .then((allEntries) => {
-        const parsed = prepareDataList(allEntries);
-        setEntries(parsed);
+  useLayoutEffect(() => {
+    if (entryUpdated) {
+      getEntries().then((allEntries) => setEntries(allEntries));
+    } else {
+      getEntries().then((allEntries) => {
+        setEntries(allEntries);
+        if (allEntries.length > 0) {
+          setEntryId(allEntries[0]._id);
+        }
       });
-  }, []);
+    }
+  }, [entryUpdated]);
 
   const parseEntries = (allEntries: IEntry[]) => allEntries.reduce((obj: any, entry: IEntry) => {
     const dateObj = new Date(Number(entry.createdAt));
@@ -27,7 +34,6 @@ const Entries = (props: IEntryProps) => {
     if (obj[month]) {
       obj[month].items.push({
         title: <ListItem handleOnClick={handleOnClick} entry={entry} />,
-
       });
     } else {
       // eslint-disable-next-line no-param-reassign
@@ -76,7 +82,7 @@ const Entries = (props: IEntryProps) => {
           && (
             <div>
               <ReactListView
-                data={entries}
+                data={prepareDataList(entries)}
                 headerAttName="headerName"
                 itemsAttName="items"
                 styles={styles}

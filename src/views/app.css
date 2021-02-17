@@ -8,7 +8,6 @@
 
 aside {
   width: 30%;
-  color: blue;
   border-right: 1px solid #E0DDDD;
   height: inherit;
   overflow-y: scroll;
@@ -23,8 +22,9 @@ main {
 }
 
 .journal {
-  display: block;
-  width: 80%;
+  display: flex;
+  width: inherit;
+  justify-content: center;
 }
 
 #date h1 {
