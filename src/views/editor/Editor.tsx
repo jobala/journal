@@ -6,6 +6,7 @@ import './editor.css';
 import { entryController } from '../../controllers/entry';
 import { IEditorProps } from '../../types';
 import { WEEKDAYS, MONTHS } from '../../constants';
+import { debounce } from '../util/util';
 
 const Editor = (props: IEditorProps) => {
   let { entryId } = props;
@@ -31,22 +32,20 @@ const Editor = (props: IEditorProps) => {
   }
 
   useEffect(() => {
-    if (quill) {
-      quill.on('text-change', () => {
-        const contents = quill.getContents();
-        const payload = {
-          text: JSON.stringify(contents),
-          _id: entryId,
-        };
+    const returnedFunction = debounce(() => {
+      const contents = quill.getContents();
+      const payload = {
+        text: JSON.stringify(contents),
+        _id: entryId,
+      };
 
-        // Debouncing saves on database calls by putting a one second delay between calls
-        // allows us to bulk changes and update the database once in every second.
-        setTimeout(() => {
-          entryController.updateEntry(payload)
-            .then(() => setEntryUpdated(payload.text))
-            .catch((error: Error) => { throw error; });
-        }, 1000);
-      });
+      entryController.updateEntry(payload)
+        .then(() => setEntryUpdated(payload.text))
+        .catch((error: Error) => { throw error; });
+    }, 1000);
+
+    if (quill) {
+      quill.on('text-change', returnedFunction);
     }
 
     return () => {
