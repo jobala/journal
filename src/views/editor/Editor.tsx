@@ -42,7 +42,7 @@ const Editor = (props: IEditorProps) => {
       entryController.updateEntry(payload)
         .then(() => setEntryUpdated(payload.text))
         .catch((error: Error) => { throw error; });
-    }, 500);
+    }, 500, true);
 
     if (quill) {
       quill.on('text-change', returnedFunction);

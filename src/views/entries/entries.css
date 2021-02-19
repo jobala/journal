@@ -1,5 +1,8 @@
 button {
   margin: 5px;
+  position: fixed;
+  bottom: 0;
+  right: 1;
 }
 
 ul {
@@ -18,6 +21,10 @@ ul {
   color: #908F8F;
   height: 70px;
   overflow-y:  hidden;
+}
+
+.list-item:hover {
+  cursor: pointer;
 }
 
 span {
